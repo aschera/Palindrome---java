@@ -1,0 +1,77 @@
+/*
+ * A program class (firstsubroutines)with two subroutines (myConversion and myReverse).
+ * The program tests if the user input word is a palindrome.
+ * The subroutine myConversion converts the input string to lower case, and removes any non-letter characters.
+ * The subroutine myReverse takes the string and reverses it.
+ * The main routine will compare the user input string with the reverse and see if it is a palindrome.
+ */
+ 
+/**
+ *
+ * @author Christina B.
+ */
+public class Firstsubroutines {
+
+    /**
+     * @param args the command line arguments
+     */
+        public static void main(String[] args) {
+
+//User menu explanation:
+TextIO.putln("insert a string"); 
+TextIO.putln("to determine whether it is a palindrome");
+
+// A while loop that asks if the user wants to test another word (y/n)
+boolean playAgain;
+do {
+    String myInput;    
+    myInput = TextIO.getlnString();  // Get the user's input.
+    
+    // Convert 
+    String conversion = myConversion(myInput); //Call the conversion-subroutine
+    System.out.println("You entered the following text = " + conversion); //print out the converted word.
+    
+    // Reverse
+    String reverse = myReverse(conversion); //Call the reverse-subroutine
+    System.out.println("The reverse of the above text is = " + reverse); //print out the reversed word.
+    
+    // Comparing the users entered text with the reverse of it to see if its a palindrome.
+    if(conversion.equals(reverse))    
+                System.out.println("ITS A PALINDROME");
+            else
+                System.out.println("ITS NOT A PALINDROME");
+    
+    // Ask the user if another word should be checked.
+    TextIO.put("Would you like to enter another string? ");
+    playAgain = TextIO.getlnBoolean();
+
+} while (playAgain);
+
+TextIO.putln("Thanks for playing.  Goodbye.");
+   } // end of main()  
+
+// static subroutine that converts to lower case and removes non-letter characters.
+private static String myConversion(String str){
+    String conversion = str; 
+    conversion  = conversion.replaceAll("\\P{Alnum}", "").toLowerCase();
+    return conversion;
+} //end subroutine myConversion 
+
+// static subroutine that reverses a user input string
+private static String myReverse(String str){
+    String reverse = "";
+    int length = str.length();
+    for( int i = length - 1 ; i >= 0 ; i-- ) {
+       reverse = reverse + str.charAt(i);
+    }
+    return reverse;
+} //end subroutine myReverse        
+        
+    } //End of class
+
+ 
+
+
+
+    
+
